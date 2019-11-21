@@ -1,5 +1,6 @@
 package com.example.weatherdemo.date
 
+import android.util.Log
 import com.google.gson.Gson
 
 public class ForecastRequest(val zipCode: String) {
@@ -10,6 +11,7 @@ public class ForecastRequest(val zipCode: String) {
     }
     fun execute(): ForecastResult {
         val forecastJsonStr = java.net.URL(COMPLETE_URL + zipCode).readText()
+
         return Gson().fromJson(forecastJsonStr, ForecastResult::class.java)
     }
 }

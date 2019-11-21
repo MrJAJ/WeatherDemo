@@ -1,4 +1,4 @@
-package com.example.weatherdemo
+package com.example.weatherdemo.domain
 
 import android.util.Log
 import java.net.URL
