@@ -3,10 +3,7 @@ package com.example.weatherdemo.database
 import com.example.weatherdemo.domain.Forecast
 import com.example.weatherdemo.domain.ForecastDataSource
 import com.example.weatherdemo.domain.ForecastList
-import com.example.weatherdemo.util.clear
-import com.example.weatherdemo.util.parseList
-import com.example.weatherdemo.util.parseOpt
-import com.example.weatherdemo.util.toVarargArray
+import com.example.weatherdemo.util.*
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.insert
 
@@ -33,8 +30,10 @@ class ForecastDb(
         }
     }
 
-    fun requestDayForecast(id: Long): Forecast? =forecastDbHelper.use {
-        val forecast=select(DayForecastTable.NAME).whereSimple("_id = ?",id.toString()).parseOpt{DayForecast(HashMap(it))}
-        forecast?.let { dataMapper.convertDayToDomain(it) }
+    override fun requestDayForecast(id: Long): Forecast? = forecastDbHelper.use {
+        val forecast = select(DayForecastTable.NAME).byId(id).
+            parseOpt { DayForecast(HashMap(it)) }
+        if (forecast != null) dataMapper.convertDayToDomain(forecast
+        ) else null
     }
 }

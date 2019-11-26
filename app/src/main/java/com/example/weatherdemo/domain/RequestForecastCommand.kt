@@ -1,7 +1,5 @@
 package com.example.weatherdemo.domain
 
-import android.util.Log
-
 class RequestForecastCommand(val zipCode: Long,
                              val forecastProvider: ForecastProvider = ForecastProvider()) :
     Command<ForecastList> {

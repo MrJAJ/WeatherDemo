@@ -30,3 +30,5 @@ inline fun <T, R : Any> Iterable<T>.firstResult(predicate: (T) -> R?) : R {
 fun <K, V : Any> MutableMap<K, V?>.toVarargArray():
         Array<out Pair<K, V>> = map({ Pair(it.key, it.value!!) }).toTypedArray()
 
+fun SelectQueryBuilder.byId(id: Long): SelectQueryBuilder
+        = whereSimple("_id = ?", id.toString())
