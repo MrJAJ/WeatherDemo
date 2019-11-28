@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeatherDemo</string>
+    <string name="settings">settings</string>
+    <string name="city_zipcode">city_zipcode</string>
 </resources>

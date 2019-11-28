@@ -15,3 +15,4 @@ public class ForecastRequest(val zipCode: String) {
         return Gson().fromJson(forecastJsonStr, ForecastResult::class.java)
     }
 }
+
